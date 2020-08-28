@@ -69,23 +69,19 @@ formattinglist = ['All Species', 'Setosa', 'Versicolor','Virginica',]
 
 
 #Histogram
-for item in toplvlist:
-    fig, ax2d = plt.subplots(2,2, figsize= (10,8))
-    ax = np.ravel(ax2d)
-    fig.suptitle('Iris Flower Distribution of Variables')
-    #if count == 0:
-      #  fig.suptitle('Iris Flower Distribution of Variables')
-    #else:
-      #  fig.suptitle('{} Flower Distribution of Variables'.format(i for x,i in enumerate(toplvlist) if x = count):-4)
-    for count, p in enumerate(item):
-        ax[count].hist(p, bins = 15, edgecolor='black')
-        ax[count].set(title=df.columns.values[count])
-        if count > 1:
-            ax[count].set(xlabel = 'cm')
-        if count == 0 or 2:
-            ax[count].set(ylabel = '# of occurrences')
-        for count, q in enumerate(formattinglist):
-            fig.savefig('{z}hist.jpg'.format(z = q))
+fig, ax2d = plt.subplots(2,2, figsize= (10,8))
+ax = np.ravel(ax2d)
+fig.suptitle('Iris Flower Distribution of Variables')
+for count, p in enumerate(allspecies):
+    ax[count].hist(p, bins = 15, edgecolor='black')
+    ax[count].set(title=df.columns.values[count])
+    if count > 1:
+        ax[count].set(xlabel = 'cm')
+    if count == 0 or 2:
+        ax[count].set(ylabel = '# of occurrences')
+    fig.suptitle('{z} Flower Distribution of Variables'.format(z = formattinglist[0]))
+    fig.savefig('{z}hist.jpg'.format(z = formattinglist[0]))
+    
 
 #Scatter
 fig, ax = plt.subplots(1,2, figsize = (10,8))
@@ -102,4 +98,4 @@ ax[1].scatter(virginicap_l, virginicap_w, color = 'b', label = 'Virginica')
 ax[1].set(xlabel = 'Petal Length cm')
 ax[1].set(ylabel = 'Petal Width cm')
 ax[1].legend()
-fig.savefig('Scarrterplot.jpg')
+fig.savefig('Scatterplot.jpg')
